@@ -23,9 +23,6 @@ function toggle(source) {
             checkboxes[i].checked = source.checked;
     }
 }
-
-
-
 $(function(){
 	var eml = '<%= email%>';
 	//alert(eml);
@@ -255,7 +252,7 @@ $(function(){
        <td >
       <table border="0">
 		<tbody><tr>
-			<td><input type="radio" name="a" value="" checked><label >Day Wise</label></td><td><input  type="radio" name="a" value=""><label>Periodic</label></td>
+			<td><input type="radio " name="a" value="" checked><label >Day Wise</label></td><td><input  type="radio" name="a" value=""><label>Periodic</label></td>
 		</tr>
 	</tbody></table>
         </td>

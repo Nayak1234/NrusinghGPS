@@ -258,6 +258,18 @@
 		<jsp:include page="menu.jsp" />
 		</header>
 		<!-- top panel ends -->
+		
+		<table align="right" style="width: 5%;">
+<tbody><tr>
+</tr>
+ <tr>
+ <td style="padding-right:5px;">
+ <input type="image" src="images/excel_icon.png " style="border-width:0px;width: 25px"><br><br>
+  <input type="image" src="images/pdfimg.png" style="border-width:0px;width: 25px">
+  </td>
+  </tr>
+  </tbody>
+</table>
 
 		<!-- left panel -->
 		<nav> 
@@ -289,6 +301,15 @@
 			</div>
 		</nav>
 		<!-- left panel ends -->
+		
+		
+		
+
+		
+		
+		
+		
+		
 
 		<!-- right panel -->
 		<article> <!-- <p><a href="map.jsp">Map</a></p> -->

@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Nrusingh GPS</title>
 <link href="css/index.css" rel="stylesheet" />
-<script src="js/jquery.min.js"></script>
+<script src="js/jquery.min.js"></script >
 <script type="text/javascript">
 	$(function(){
 		$('#txt_submit').on('click', function(){
