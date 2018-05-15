@@ -14,13 +14,22 @@
 <link href="css/main.css" rel="stylesheet" />
 <link href="css/topmenu.css" rel="stylesheet" />
 <link href="css/tablestyle.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.4/css/jquery.dataTables.min.css">
 
 <script src="js/jquery.min.js"></script>
+
+<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.4/js/jquery.dataTables.min.js"></script>
+
+<script src="js/jspdf.min.js" type="text/javascript"></script>
 <script src="js/jquery-ui.min1.11.0.js"></script>
 <script src="js/jquery-ui-timepicker-addon.js" type="text/javascript"></script>
 <script src="js/jquery-ui-sliderAccess.js" type="text/javascript"></script>
+
+
+
 <script type="text/javascript">
-	$(function(){
+$(function(){
 		var eml = '<%= email%>';
 		//alert(eml);
 		$('#loader_map').hide();
@@ -70,7 +79,9 @@
 		});
 		
 		$(document).on("click", "#btn_show_history", function(event) {
-			$('#loader_map').show();
+			 $('#mytable').show();
+			 $('#mytable').dataTable();
+			/* $('#loader_map').show();
 	      	var li_id = $("#select_device_list").children(":selected").attr("id");
 			//alert($("#select_device_list").children(":selected").attr("id"));
 	      	var id = li_id.split('^')[0];
@@ -105,9 +116,33 @@
 					'dataType': 'json',
 					success: function (response) {
 						$('#loader_map').hide();
+						
+						
+						
 						console.log('Success: '+JSON.stringify(response));
+						
+						
 						var html = '';
-						html += '<div>';
+						
+						html +=	'<table align="right" style="width: 5%;">';
+						html +='<tr>';
+					//	html +='</tr>';
+					//	html +=' <tr>';
+						html +='<td >';
+						html +='<button>';
+						html +='<input type="image" src="images/excel_icon.png " style="border-width:0px;width: 25px">';
+						html +='</button><br>';
+						html +='<button id="export">';
+						html +='<input type="image" src="images/pdfimg.png" style="border-width:0px;width: 25px">';
+						html +='</button>';
+						html +='</td>';
+						html +='</tr>';
+					//	html += '</tbody>';
+						html +='</table>';	
+						
+					       
+						
+						html += '<div id="content">';
 						html += '<table id="mytable" style="width: 100%; font-size: 11px;">';
 						html += 	'<tr>';
 						html += 		'<th>Device Name</th>';
@@ -169,7 +204,7 @@
 						$('#div_data').html(JSON.stringify(response));
 					}
 				});
-	      	}
+	      	} */
 	    });
 		
 		
@@ -239,6 +274,57 @@
 		return Localdate;
 	}
 	
+	
+	
+	
+	
+	 //document.getElementById("export").addEventListener("click",
+	 // exportPDF);
+
+	var specialElementHandlers = {
+	  // element with id of "bypass" - jQuery style selector
+	  '.no-export': function(element, renderer) {
+	    // true = "handled elsewhere, bypass text extraction"
+	    return true;
+	  }
+	};
+
+	function exportPDF() {
+
+	  var doc = new jsPDF('p', 'pt', 'a4');
+	  //A4 - 595x842 pts
+	  //https://www.gnu.org/software/gv/manual/html_node/Paper-Keywords-and-paper-size-in-points.html
+
+
+	  //Html source 
+	  var source = document.getElementById("content").innerHTML;
+
+	  var margins = {
+	    top: 10,
+	    bottom: 10,
+	    left: 10,
+	    width: 595
+	  };
+
+	  doc.fromHTML(
+	    source, // HTML string or DOM elem ref.
+	    margins.left,
+	    margins.top, {
+	      'width': margins.width,
+	      'elementHandlers': specialElementHandlers
+	    },
+
+	    function(dispose){
+	      // dispose: object with X, Y of the last line add to the PDF 
+	      //this allow the insertion of new lines after html
+	      doc.save('Test.pdf');
+	    }, margins);
+	}
+
+	
+	
+	
+	
 </script>
 
 </head>
@@ -259,17 +345,7 @@
 		</header>
 		<!-- top panel ends -->
 		
-		<table align="right" style="width: 5%;">
-<tbody><tr>
-</tr>
- <tr>
- <td style="padding-right:5px;">
- <input type="image" src="images/excel_icon.png " style="border-width:0px;width: 25px"><br><br>
-  <input type="image" src="images/pdfimg.png" style="border-width:0px;width: 25px">
-  </td>
-  </tr>
-  </tbody>
-</table>
+		
 
 		<!-- left panel -->
 		<nav> 
@@ -313,6 +389,99 @@
 
 		<!-- right panel -->
 		<article> <!-- <p><a href="map.jsp">Map</a></p> -->
+		<table id="mytable" class="table table-bordered" style="display: none;">
+          <thead>
+            <tr>
+              <th>Device Name</th>
+              <th>Address</th>
+              <th>Start Time</th>
+              <th>End Time</th>
+              
+               <th>Duration</th>
+                <th>Latitude</th>
+                 <th>Longitude</th>
+                  <th>Spent Fuel</th>
+                   <th>Distance</th>
+                    <th>Avg.Speed</th>
+                    <th>Max.Speed</th>
+                    
+                  
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>James</td>
+              <td>8.9</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>Harry</td>
+              <td>7.6</td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>Emma</td>
+              <td>7.0</td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>Emma</td>
+              <td>7.0</td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>Emma</td>
+              <td>7.0</td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>Emma</td>
+              <td>7.0</td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>Emma</td>
+              <td>7.0</td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>Emma</td>
+              <td>7.0</td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>Emma</td>
+              <td>7.0</td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>Emma</td>
+              <td>7.0</td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>Emma</td>
+              <td>7.0</td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>Emma</td>
+              <td>7.0</td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>Emma</td>
+              <td>7.0</td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>Emma</td>
+              <td>7.0</td>
+            </tr>
+            
+          </tbody>
+        </table>
 		<div id="div_map">
 			<div id="loader_map" style="disply: none;">
 				<img id="loader_img_map" alt="Loding ..." src="images/loader.gif" />
