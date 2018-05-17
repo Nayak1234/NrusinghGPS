@@ -16,6 +16,10 @@
 <link href="css/tablestyle.css" rel="stylesheet" />
 <link rel="stylesheet" href="https://cdn.datatables.net/1.10.4/css/jquery.dataTables.min.css">
 
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 <script src="js/jquery.min.js"></script>
 
 <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
@@ -79,9 +83,7 @@ $(function(){
 		});
 		
 		$(document).on("click", "#btn_show_history", function(event) {
-			 $('#mytable').show();
-			 $('#mytable').dataTable();
-			/* $('#loader_map').show();
+			 
 	      	var li_id = $("#select_device_list").children(":selected").attr("id");
 			//alert($("#select_device_list").children(":selected").attr("id"));
 	      	var id = li_id.split('^')[0];
@@ -97,8 +99,11 @@ $(function(){
 	      	}else{
 	      		var from = Local2ISO_Date(fromdatestr); 
 	      		var to   = Local2ISO_Date(todatestr); 
-	      		
-	      		var url = "http://23.92.61.79:8082/api/reports/stops?deviceId="+id+"&from="+from+"&to="+to+"";
+	      	//	 $('#loader_map').show();
+	      		 $('#mytable').show();
+				 $('#mytable').dataTable();
+	      	} 
+	      	/*	var url = "http://23.92.61.79:8082/api/reports/stops?deviceId="+id+"&from="+from+"&to="+to+"";
 	      		//alert(url);
 	      		$.ajax({
 					async:false,
@@ -371,7 +376,15 @@ $(function(){
 				
 					<tr>
 						<td></td>
-						<td><input type="button" id="btn_show_history" value="SHOW" /></td>
+						
+						
+						
+						
+  <!-- Trigger the modal with a button -->
+ <td><button id="btn_show_history" type="button"  data-toggle="modal" data-target="#myModal">show</button></td>
+
+
+					<!-- <td><input type="button" id="btn_show_history" value="SHOW" /></td> -->
 					</tr>
 				</table>
 			</div>
@@ -389,7 +402,11 @@ $(function(){
 
 		<!-- right panel -->
 		<article> <!-- <p><a href="map.jsp">Map</a></p> -->
-		<table id="mytable" class="table table-bordered" style="display: none;">
+		<!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+   <div class="modal-dialog"> 
+    
+    <table id="mytable" class="table table-bordered" style="display: none;">
           <thead>
             <tr>
               <th>Device Name</th>
@@ -412,76 +429,189 @@ $(function(){
             <tr>
               <td>1</td>
               <td>James</td>
-              <td>8.9</td>
+              <td>02:12</td>
+              <td>08:15</td>
+              <td>50</td>
+              <td>20.23456</td>
+              <td>80.24765</td>
+               <td>20</td>
+                <td>40</td>
+                 <td>60</td>
+                  <td>120</td>
             </tr>
             <tr>
               <td>2</td>
               <td>Harry</td>
-              <td>7.6</td>
+              <td>02:12</td>
+              <td>08:15</td>
+              <td>50</td>
+              <td>20.23456</td>
+              <td>80.24765</td>
+               <td>20</td>
+                <td>40</td>
+                 <td>60</td>
+                  <td>120</td>
             </tr>
             <tr>
               <td>3</td>
               <td>Emma</td>
-              <td>7.0</td>
+              <td>02:12</td>
+              <td>08:15</td>
+              <td>50</td>
+              <td>20.23456</td>
+              <td>80.24765</td>
+               <td>20</td>
+                <td>40</td>
+                 <td>60</td>
+                  <td>120</td>
             </tr>
             <tr>
               <td>3</td>
               <td>Emma</td>
-              <td>7.0</td>
+              <td>02:12</td>
+              <td>08:15</td>
+              <td>50</td>
+              <td>20.23456</td>
+              <td>80.24765</td>
+               <td>20</td>
+                <td>40</td>
+                 <td>60</td>
+                  <td>120</td>
             </tr>
             <tr>
               <td>3</td>
               <td>Emma</td>
-              <td>7.0</td>
+              <td>02:12</td>
+              <td>08:15</td>
+              <td>50</td>
+              <td>20.23456</td>
+              <td>80.24765</td>
+               <td>20</td>
+                <td>40</td>
+                 <td>60</td>
+                  <td>120</td>
             </tr>
             <tr>
               <td>3</td>
               <td>Emma</td>
-              <td>7.0</td>
+              <td>02:12</td>
+              <td>08:15</td>
+              <td>50</td>
+              <td>20.23456</td>
+              <td>80.24765</td>
+               <td>20</td>
+                <td>40</td>
+                 <td>60</td>
+                  <td>120</td>
             </tr>
             <tr>
               <td>3</td>
               <td>Emma</td>
-              <td>7.0</td>
+             <td>02:12</td>
+              <td>08:15</td>
+              <td>50</td>
+              <td>20.23456</td>
+              <td>80.24765</td>
+               <td>20</td>
+                <td>40</td>
+                 <td>60</td>
+                  <td>120</td>
             </tr>
             <tr>
               <td>3</td>
               <td>Emma</td>
-              <td>7.0</td>
+              <td>02:12</td>
+              <td>08:15</td>
+              <td>50</td>
+              <td>20.23456</td>
+              <td>80.24765</td>
+               <td>20</td>
+                <td>40</td>
+                 <td>60</td>
+                  <td>120</td>
             </tr>
             <tr>
               <td>3</td>
               <td>Emma</td>
-              <td>7.0</td>
+              <td>02:12</td>
+              <td>08:15</td>
+              <td>50</td>
+              <td>20.23456</td>
+              <td>80.24765</td>
+               <td>20</td>
+                <td>40</td>
+                 <td>60</td>
+                  <td>120</td>
             </tr>
             <tr>
               <td>3</td>
               <td>Emma</td>
-              <td>7.0</td>
+              <td>02:12</td>
+              <td>08:15</td>
+              <td>50</td>
+              <td>20.23456</td>
+              <td>80.24765</td>
+               <td>20</td>
+                <td>40</td>
+                 <td>60</td>
+                  <td>120</td>
             </tr>
             <tr>
               <td>3</td>
               <td>Emma</td>
-              <td>7.0</td>
+              <td>02:12</td>
+              <td>08:15</td>
+              <td>50</td>
+              <td>20.23456</td>
+              <td>80.24765</td>
+               <td>20</td>
+                <td>40</td>
+                 <td>60</td>
+                  <td>120</td>
             </tr>
             <tr>
               <td>3</td>
               <td>Emma</td>
-              <td>7.0</td>
+              <td>02:12</td>
+              <td>08:15</td>
+              <td>50</td>
+              <td>20.23456</td>
+              <td>80.24765</td>
+               <td>20</td>
+                <td>40</td>
+                 <td>60</td>
+                  <td>120</td>
             </tr>
             <tr>
               <td>3</td>
               <td>Emma</td>
-              <td>7.0</td>
+              <td>02:12</td>
+              <td>08:15</td>
+              <td>50</td>
+              <td>20.23456</td>
+              <td>80.24765</td>
+               <td>20</td>
+                <td>40</td>
+                 <td>60</td>
+                  <td>120</td>
             </tr>
             <tr>
               <td>3</td>
               <td>Emma</td>
-              <td>7.0</td>
+              <td>02:12</td>
+              <td>08:15</td>
+              <td>50</td>
+              <td>20.23456</td>
+              <td>80.24765</td>
+               <td>20</td>
+                <td>40</td>
+                 <td>60</td>
+                  <td>120</td>
             </tr>
             
           </tbody>
         </table>
+        </div></div>
 		<div id="div_map">
 			<div id="loader_map" style="disply: none;">
 				<img id="loader_img_map" alt="Loding ..." src="images/loader.gif" />
